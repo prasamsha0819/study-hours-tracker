@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PASSWORD SCREEN -->
+  <section id="login-screen">
+    <h1>🔒 Admin Login</h1>
+    <input type="password" id="password-input" placeholder="Enter password" />
+    <button onclick="checkPassword()">Enter</button>
+    <p id="login-error" style="color:red; margin-top:1rem;"></p>
+  </section>
+
+  <!-- ADMIN PANEL (hidden until password correct) -->
+  <section id="admin-panel" style="display:none;">
+    <h1>⚙️ Admin Panel</h1>
+
+    <div id="admin-form">
+      <input type="text" id="week-label" placeholder="Week label e.g. Jan 6 - Jan 12" />
+
+      <div id="girls-inputs"></div>
+
+      <button onclick="submitWeek()">👑 Crown the Winner</button>
+    </div>
+  </section>
+
+  <script src="admin.js"></script>
+</body>
+</html>
