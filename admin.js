@@ -1,23 +1,24 @@
+const SUPABASE_URL = 'https://llqmmgmmjsvaurflwaxm.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_tJ3CSRWYu2kJeom076wNdQ_CGiTh-da';
 const PASSWORD = "sigma2024"; // 🔒 change this to whatever you want
-const GIRLS = [
-  { name: "Sara", photo: "sara.png" },
-  { name: "Emma", photo: "emma.png" },
-  { name: "Lily", photo: "lily.png" },
-  { name: "Ava", photo: "ava.png" },
-  { name: "Mia", photo: "mia.png" },
-  { name: "Zoe", photo: "zoe.png" },
-  { name: "Chloe", photo: "chloe.png" },
-  { name: "Grace", photo: "grace.png" },
-  { name: "Nora", photo: "nora.png" },
-  { name: "Riley", photo: "riley.png" },
-  { name: "Ella", photo: "ella.png" },
-  { name: "Hazel", photo: "hazel.png" },
-  { name: "Luna", photo: "luna.png" },
-  { name: "Stella", photo: "stella.png" },
-  { name: "Violet", photo: "violet.png" }
-]; // ✏️ replace with your actual girls' names
 
-// Check password
+const GIRLS = [
+  { name: "Tyler", photo: "Tyler.png" },
+  { name: "Yaressi", photo: "Yaressi.png" },
+  { name: "Yazmin", photo: "Yazmin.png" },
+  { name: "Yesica", photo: "Yesica.png" },
+  { name: "Merit", photo: "Merit.png" },
+  { name: "Key'Ona", photo: "Key'Ona.png" },
+  { name: "Alex", photo: "Alex.png" },
+  { name: "JD", photo: "JD.png" },
+  { name: "Elvia", photo: "Elvia.png" },
+  { name: "Paloma", photo: "Paloma.png" },
+  { name: "Adelaide", photo: "Adelaide.png" },
+  { name: "Prasamsha", photo: "Prasamsha.png" },
+  { name: "Melanie", photo: "Melanie.png" },
+  { name: "Carter", photo: "Carter.png" }
+];
+
 function checkPassword() {
   const input = document.getElementById('password-input').value;
   if (input === PASSWORD) {
@@ -29,7 +30,6 @@ function checkPassword() {
   }
 }
 
-// Build the input form for all 15 girls
 function buildForm() {
   const container = document.getElementById('girls-inputs');
   GIRLS.forEach(girl => {
@@ -43,8 +43,7 @@ function buildForm() {
   });
 }
 
-// Submit the week and find the winner
-function submitWeek() {
+async function submitWeek() {
   const weekLabel = document.getElementById('week-label').value;
   if (!weekLabel) {
     alert('Please enter a week label!');
@@ -63,19 +62,27 @@ function submitWeek() {
     }
   });
 
-  const currentWeek = {
-    weekLabel,
-    winnerName: winner.name,
-    winnerHours: winner.hours,
-    winnerPhoto: winner.photo,
-    girls
-  };
-  localStorage.setItem('currentWeek', JSON.stringify(currentWeek));
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/weeks`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({
+      week_label: weekLabel,
+      winner_name: winner.name,
+      winner_hours: winner.hours,
+      winner_photo: winner.photo,
+      girls: girls
+    })
+  });
 
-  const pastWinners = JSON.parse(localStorage.getItem('pastWinners')) || [];
-  pastWinners.unshift(currentWeek);
-  localStorage.setItem('pastWinners', JSON.stringify(pastWinners));
-
-  alert(`👑 ${winner.name} is crowned Academic Weapon with ${winner.hours} hours!`);
-  window.location.href = 'index.html';
+  if (response.ok) {
+    alert(`👑 ${winner.name} is crowned Academic Weapon with ${winner.hours} hours!`);
+    window.location.href = 'index.html';
+  } else {
+    alert('Something went wrong! Check your Supabase connection.');
+  }
 }
