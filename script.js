@@ -10,17 +10,14 @@ async function loadData() {
   });
 
   const data = await response.json();
-
   if (!data || data.length === 0) return;
 
-  // Most recent week = current winner
   const currentWeek = data[0];
   document.getElementById('winner-photo').src = currentWeek.winner_photo;
   document.getElementById('winner-name').textContent = currentWeek.winner_name;
   document.getElementById('winner-hours').textContent = `${currentWeek.winner_hours} hours this week`;
   document.getElementById('winner-week').textContent = currentWeek.week_label;
 
-  // Rest = past weeks
   const pastWinners = data.slice(1);
   const pastContainer = document.getElementById('past-winners');
 
