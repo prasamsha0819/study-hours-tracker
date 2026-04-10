@@ -115,7 +115,12 @@ h2 {
   border: 2px solid var(--purple);
   border-radius: 12px;
   padding: 1rem;
-  width: 140px;
+  width: 200px;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .past-card img {
