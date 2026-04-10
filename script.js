@@ -9,8 +9,9 @@ async function loadData() {
     }
   });
 
-  const data = await response.json();
-  if (!data || data.length === 0) return;
+const data = await response.json();
+console.log('data from supabase:', data);
+if (!data || data.length === 0) return;
 
   const currentWeek = data[0];
   document.getElementById('winner-photo').src = currentWeek.winner_photo;
@@ -34,4 +35,4 @@ async function loadData() {
   });
 }
 
-loadData();
+loadData().then(() => console.log('done')).catch(err => console.error('error:', err));
