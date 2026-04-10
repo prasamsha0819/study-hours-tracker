@@ -3,20 +3,20 @@ const SUPABASE_KEY = 'sb_publishable_tJ3CSRWYu2kJeom076wNdQ_CGiTh-da';
 const PASSWORD = "sigma2024"; // 🔒 change this to whatever you want
 
 const GIRLS = [
-  { name: "Tyler", photo: "Tyler.png" },
-  { name: "Yaressi", photo: "Yaressi.png" },
-  { name: "Yazmin", photo: "Yazmin.png" },
-  { name: "Yesica", photo: "Yesica.png" },
-  { name: "Merit", photo: "Merit.png" },
-  { name: "Key'Ona", photo: "Key'Ona.png" },
-  { name: "Alex", photo: "Alex.png" },
-  { name: "JD", photo: "JD.png" },
-  { name: "Elvia", photo: "Elvia.png" },
-  { name: "Paloma", photo: "Paloma.png" },
-  { name: "Adelaide", photo: "Adelaide.png" },
-  { name: "Prasamsha", photo: "Prasamsha.png" },
-  { name: "Melanie", photo: "Melanie.png" },
-  { name: "Carter", photo: "Carter.png" }
+  { name: "Tyler", photo: "Tyler.jpg" },
+  { name: "Yaressi", photo: "Yaressi.jpg" },
+  { name: "Yazmin", photo: "Yazmin.jpg" },
+  { name: "Yesica", photo: "Yesica.jpg" },
+  { name: "Merit", photo: "Merit.jpg" },
+  { name: "Key'Ona", photo: "Key'Ona.jpg" },
+  { name: "Alex", photo: "Alex.jpg      " },
+  { name: "JD", photo: "JD.jpg" },
+  { name: "Elvia", photo: "Elvia.jpg" },
+  { name: "Paloma", photo: "Paloma.jpg" },
+  { name: "Adelaide", photo: "Adelaide.jpg" },
+  { name: "Prasamsha", photo: "Prasamsha.jpg" },
+  { name: "Melanie", photo: "Melanie.jpg" },
+  { name: "Carter", photo: "Carter.jpg" }
 ];
 
 function checkPassword() {
